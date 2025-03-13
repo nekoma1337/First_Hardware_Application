@@ -96,7 +96,7 @@
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(778, 164);
+            this.label2.Location = new System.Drawing.Point(767, 164);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 40);
             this.label2.TabIndex = 42;
@@ -294,7 +294,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(150, 35);
+            this.radioButton2.Location = new System.Drawing.Point(151, 35);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(88, 36);
             this.radioButton2.TabIndex = 1;

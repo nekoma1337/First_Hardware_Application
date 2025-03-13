@@ -33,10 +33,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label_exit = new System.Windows.Forms.Label();
             this.label_item = new System.Windows.Forms.Label();
-            this.textbox_item = new System.Windows.Forms.TextBox();
+            this.NameTb = new System.Windows.Forms.TextBox();
             this.label_itemsmanagment = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CategoryList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -52,11 +52,11 @@
             this.pictureBox_logout = new System.Windows.Forms.PictureBox();
             this.label_logout = new System.Windows.Forms.Label();
             this.label_items = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_delete = new System.Windows.Forms.Button();
+            this.button_additem = new System.Windows.Forms.Button();
+            this.button_edit = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryList)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -113,14 +113,14 @@
             this.label_item.TabIndex = 46;
             this.label_item.Text = "Category Name";
             // 
-            // textbox_item
+            // NameTb
             // 
-            this.textbox_item.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textbox_item.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textbox_item.Location = new System.Drawing.Point(524, 174);
-            this.textbox_item.Name = "textbox_item";
-            this.textbox_item.Size = new System.Drawing.Size(188, 37);
-            this.textbox_item.TabIndex = 45;
+            this.NameTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.NameTb.Location = new System.Drawing.Point(446, 174);
+            this.NameTb.Name = "NameTb";
+            this.NameTb.Size = new System.Drawing.Size(335, 37);
+            this.NameTb.TabIndex = 45;
             // 
             // label_itemsmanagment
             // 
@@ -133,7 +133,6 @@
             this.label_itemsmanagment.TabIndex = 51;
             this.label_itemsmanagment.Text = "Categories Management";
             this.label_itemsmanagment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_itemsmanagment.Click += new System.EventHandler(this.label_itemsmanagment_Click);
             // 
             // label2
             // 
@@ -145,16 +144,16 @@
             this.label2.Size = new System.Drawing.Size(197, 40);
             this.label2.TabIndex = 56;
             this.label2.Text = "Categories list";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // dataGridView1
+            // CategoryList
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(210, 372);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(812, 217);
-            this.dataGridView1.TabIndex = 55;
+            this.CategoryList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CategoryList.Location = new System.Drawing.Point(210, 372);
+            this.CategoryList.Name = "CategoryList";
+            this.CategoryList.RowHeadersWidth = 62;
+            this.CategoryList.Size = new System.Drawing.Size(812, 217);
+            this.CategoryList.TabIndex = 55;
+            this.CategoryList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryList_CellContentClick);
             // 
             // panel1
             // 
@@ -342,44 +341,47 @@
             this.label_items.Text = "Items";
             this.label_items.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // button_delete
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(729, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 46);
-            this.button1.TabIndex = 60;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = false;
+            this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
+            this.button_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_delete.FlatAppearance.BorderSize = 0;
+            this.button_delete.Location = new System.Drawing.Point(729, 259);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(148, 46);
+            this.button_delete.TabIndex = 60;
+            this.button_delete.Text = "Delete";
+            this.button_delete.UseVisualStyleBackColor = false;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
-            // button2
+            // button_additem
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.Location = new System.Drawing.Point(547, 259);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 46);
-            this.button2.TabIndex = 59;
-            this.button2.Text = "Add Item";
-            this.button2.UseVisualStyleBackColor = false;
+            this.button_additem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
+            this.button_additem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_additem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_additem.FlatAppearance.BorderSize = 0;
+            this.button_additem.Location = new System.Drawing.Point(547, 259);
+            this.button_additem.Name = "button_additem";
+            this.button_additem.Size = new System.Drawing.Size(156, 46);
+            this.button_additem.TabIndex = 59;
+            this.button_additem.Text = "Add Item";
+            this.button_additem.UseVisualStyleBackColor = false;
+            this.button_additem.Click += new System.EventHandler(this.button_additem_Click);
             // 
-            // button3
+            // button_edit
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(377, 259);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(149, 46);
-            this.button3.TabIndex = 58;
-            this.button3.Text = "Edit";
-            this.button3.UseVisualStyleBackColor = false;
+            this.button_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
+            this.button_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_edit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_edit.FlatAppearance.BorderSize = 0;
+            this.button_edit.Location = new System.Drawing.Point(377, 259);
+            this.button_edit.Name = "button_edit";
+            this.button_edit.Size = new System.Drawing.Size(149, 46);
+            this.button_edit.TabIndex = 58;
+            this.button_edit.Text = "Edit";
+            this.button_edit.UseVisualStyleBackColor = false;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
             // 
             // Categories
             // 
@@ -387,16 +389,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1048, 671);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_delete);
+            this.Controls.Add(this.button_additem);
+            this.Controls.Add(this.button_edit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label_item);
-            this.Controls.Add(this.textbox_item);
+            this.Controls.Add(this.NameTb);
             this.Controls.Add(this.label_itemsmanagment);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.CategoryList);
             this.Font = new System.Drawing.Font("Nirmala UI", 11.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -405,7 +407,7 @@
             this.Text = "Categories";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -428,10 +430,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label_exit;
         private System.Windows.Forms.Label label_item;
-        private System.Windows.Forms.TextBox textbox_item;
+        private System.Windows.Forms.TextBox NameTb;
         private System.Windows.Forms.Label label_itemsmanagment;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView CategoryList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
@@ -447,8 +449,8 @@
         private System.Windows.Forms.PictureBox pictureBox_logout;
         private System.Windows.Forms.Label label_logout;
         private System.Windows.Forms.Label label_items;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_delete;
+        private System.Windows.Forms.Button button_additem;
+        private System.Windows.Forms.Button button_edit;
     }
 }
