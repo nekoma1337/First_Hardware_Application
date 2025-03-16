@@ -16,7 +16,23 @@ namespace First_Hardware_Application
         {
             InitializeComponent();
         }
-
+        private void button_login_Click(object sender, EventArgs e)
+        {
+            if(textbox_username.Text == ""|| textbox_password.Text == "")
+            {
+                MessageBox.Show("Missing Data! ");
+            }
+            else if (textbox_username.Text == "Admin" || textbox_password.Text == "Admin")
+            {
+                Items Obj = new Items();
+                Obj.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Wrong Username or Password !");
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -59,7 +75,13 @@ namespace First_Hardware_Application
 
         private void label4_Click(object sender, EventArgs e)
         {
+            textbox_username.Text = "";
+            textbox_password.Text = "";
+        }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

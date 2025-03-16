@@ -31,13 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customers));
             this.label_itemsmanagment = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox_category = new System.Windows.Forms.ComboBox();
+            this.GenderTb = new System.Windows.Forms.ComboBox();
             this.label_price = new System.Windows.Forms.Label();
-            this.textBox_price = new System.Windows.Forms.TextBox();
+            this.PhoneTb = new System.Windows.Forms.TextBox();
             this.label_category = new System.Windows.Forms.Label();
-            this.label_item = new System.Windows.Forms.Label();
-            this.textbox_item = new System.Windows.Forms.TextBox();
-            this.label_exit = new System.Windows.Forms.Label();
+            this.label_Name = new System.Windows.Forms.Label();
+            this.NameTb = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -55,10 +54,10 @@
             this.pictureBox_logout = new System.Windows.Forms.PictureBox();
             this.label_logout = new System.Windows.Forms.Label();
             this.label_items = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button_delete = new System.Windows.Forms.Button();
+            this.button_add = new System.Windows.Forms.Button();
+            this.button_edit = new System.Windows.Forms.Button();
+            this.CustomerList = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -69,7 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_logout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerList)).BeginInit();
             this.SuspendLayout();
             // 
             // label_itemsmanagment
@@ -83,7 +82,6 @@
             this.label_itemsmanagment.TabIndex = 37;
             this.label_itemsmanagment.Text = "Customers Management";
             this.label_itemsmanagment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_itemsmanagment.Click += new System.EventHandler(this.label_itemsmanagment_Click);
             // 
             // label2
             // 
@@ -95,20 +93,18 @@
             this.label2.Size = new System.Drawing.Size(196, 40);
             this.label2.TabIndex = 42;
             this.label2.Text = "Customers list";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // comboBox_category
+            // GenderTb
             // 
-            this.comboBox_category.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox_category.FormattingEnabled = true;
-            this.comboBox_category.Items.AddRange(new object[] {
+            this.GenderTb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GenderTb.FormattingEnabled = true;
+            this.GenderTb.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.comboBox_category.Location = new System.Drawing.Point(516, 172);
-            this.comboBox_category.Name = "comboBox_category";
-            this.comboBox_category.Size = new System.Drawing.Size(191, 39);
-            this.comboBox_category.TabIndex = 36;
-            this.comboBox_category.SelectedIndexChanged += new System.EventHandler(this.comboBox_category_SelectedIndexChanged);
+            this.GenderTb.Location = new System.Drawing.Point(516, 172);
+            this.GenderTb.Name = "GenderTb";
+            this.GenderTb.Size = new System.Drawing.Size(191, 39);
+            this.GenderTb.TabIndex = 36;
             // 
             // label_price
             // 
@@ -120,17 +116,15 @@
             this.label_price.Size = new System.Drawing.Size(78, 31);
             this.label_price.TabIndex = 31;
             this.label_price.Text = "Phone";
-            this.label_price.Click += new System.EventHandler(this.label_price_Click);
             // 
-            // textBox_price
+            // PhoneTb
             // 
-            this.textBox_price.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_price.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox_price.Location = new System.Drawing.Point(736, 172);
-            this.textBox_price.Name = "textBox_price";
-            this.textBox_price.Size = new System.Drawing.Size(188, 37);
-            this.textBox_price.TabIndex = 30;
-            this.textBox_price.TextChanged += new System.EventHandler(this.textBox_price_TextChanged);
+            this.PhoneTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PhoneTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PhoneTb.Location = new System.Drawing.Point(736, 172);
+            this.PhoneTb.Name = "PhoneTb";
+            this.PhoneTb.Size = new System.Drawing.Size(188, 37);
+            this.PhoneTb.TabIndex = 30;
             // 
             // label_category
             // 
@@ -142,53 +136,35 @@
             this.label_category.Size = new System.Drawing.Size(89, 31);
             this.label_category.TabIndex = 29;
             this.label_category.Text = "Gender";
-            this.label_category.Click += new System.EventHandler(this.label_category_Click);
             // 
-            // label_item
+            // label_Name
             // 
-            this.label_item.AutoSize = true;
-            this.label_item.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label_item.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_item.Location = new System.Drawing.Point(295, 137);
-            this.label_item.Name = "label_item";
-            this.label_item.Size = new System.Drawing.Size(60, 31);
-            this.label_item.TabIndex = 28;
-            this.label_item.Text = "Item";
-            this.label_item.Click += new System.EventHandler(this.label_item_Click);
+            this.label_Name.AutoSize = true;
+            this.label_Name.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label_Name.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Name.Location = new System.Drawing.Point(295, 137);
+            this.label_Name.Name = "label_Name";
+            this.label_Name.Size = new System.Drawing.Size(75, 31);
+            this.label_Name.TabIndex = 28;
+            this.label_Name.Text = "Name";
             // 
-            // textbox_item
+            // NameTb
             // 
-            this.textbox_item.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textbox_item.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textbox_item.Location = new System.Drawing.Point(299, 172);
-            this.textbox_item.Name = "textbox_item";
-            this.textbox_item.Size = new System.Drawing.Size(188, 37);
-            this.textbox_item.TabIndex = 27;
-            this.textbox_item.TextChanged += new System.EventHandler(this.textbox_item_TextChanged);
-            // 
-            // label_exit
-            // 
-            this.label_exit.AutoSize = true;
-            this.label_exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_exit.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_exit.ForeColor = System.Drawing.Color.Black;
-            this.label_exit.Location = new System.Drawing.Point(855, 3);
-            this.label_exit.Name = "label_exit";
-            this.label_exit.Size = new System.Drawing.Size(39, 45);
-            this.label_exit.TabIndex = 25;
-            this.label_exit.Text = "X";
-            this.label_exit.Click += new System.EventHandler(this.label_exit_Click);
+            this.NameTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.NameTb.Location = new System.Drawing.Point(299, 172);
+            this.NameTb.Name = "NameTb";
+            this.NameTb.Size = new System.Drawing.Size(188, 37);
+            this.NameTb.TabIndex = 27;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.panel2.Controls.Add(this.label_exit);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(165, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(883, 50);
             this.panel2.TabIndex = 26;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label1
             // 
@@ -201,7 +177,6 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Hardware Shop Management System 2.0";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -282,6 +257,7 @@
             this.label_billing.TabIndex = 14;
             this.label_billing.Text = "Billing";
             this.label_billing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_billing.Click += new System.EventHandler(this.label_billing_Click);
             // 
             // pictureBox3
             // 
@@ -306,6 +282,7 @@
             this.label_customer.TabIndex = 12;
             this.label_customer.Text = "Customer";
             this.label_customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_customer.Click += new System.EventHandler(this.label_customer_Click);
             // 
             // pictureBox2
             // 
@@ -330,6 +307,7 @@
             this.label_categories.TabIndex = 10;
             this.label_categories.Text = "Categories";
             this.label_categories.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_categories.Click += new System.EventHandler(this.label_categories_Click);
             // 
             // pictureBox1
             // 
@@ -352,6 +330,8 @@
             this.panel_logout.Name = "panel_logout";
             this.panel_logout.Size = new System.Drawing.Size(189, 56);
             this.panel_logout.TabIndex = 0;
+            this.panel_logout.Click += new System.EventHandler(this.label_logout_Click);
+            this.panel_logout.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_logout_Paint);
             // 
             // pictureBox_logout
             // 
@@ -376,6 +356,7 @@
             this.label_logout.TabIndex = 6;
             this.label_logout.Text = "Logout";
             this.label_logout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_logout.Click += new System.EventHandler(this.label_logout_Click);
             // 
             // label_items
             // 
@@ -388,54 +369,62 @@
             this.label_items.TabIndex = 8;
             this.label_items.Text = "Items";
             this.label_items.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_items.Click += new System.EventHandler(this.label_items_Click);
             // 
-            // button1
+            // button_delete
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(719, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 46);
-            this.button1.TabIndex = 46;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = false;
+            this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
+            this.button_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_delete.FlatAppearance.BorderSize = 0;
+            this.button_delete.Location = new System.Drawing.Point(719, 262);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(148, 46);
+            this.button_delete.TabIndex = 46;
+            this.button_delete.Text = "Delete";
+            this.button_delete.UseVisualStyleBackColor = false;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click_1);
             // 
-            // button2
+            // button_add
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.Location = new System.Drawing.Point(537, 262);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 46);
-            this.button2.TabIndex = 45;
-            this.button2.Text = "Add Item";
-            this.button2.UseVisualStyleBackColor = false;
+            this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
+            this.button_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_add.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_add.FlatAppearance.BorderSize = 0;
+            this.button_add.Location = new System.Drawing.Point(537, 262);
+            this.button_add.Name = "button_add";
+            this.button_add.Size = new System.Drawing.Size(156, 46);
+            this.button_add.TabIndex = 45;
+            this.button_add.Text = "Add Item";
+            this.button_add.UseVisualStyleBackColor = false;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
-            // button3
+            // button_edit
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(367, 262);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(149, 46);
-            this.button3.TabIndex = 44;
-            this.button3.Text = "Edit";
-            this.button3.UseVisualStyleBackColor = false;
+            this.button_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
+            this.button_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_edit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_edit.FlatAppearance.BorderSize = 0;
+            this.button_edit.Location = new System.Drawing.Point(367, 262);
+            this.button_edit.Name = "button_edit";
+            this.button_edit.Size = new System.Drawing.Size(149, 46);
+            this.button_edit.TabIndex = 44;
+            this.button_edit.Text = "Edit";
+            this.button_edit.UseVisualStyleBackColor = false;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click_1);
             // 
-            // dataGridView1
+            // CustomerList
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(210, 382);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(815, 217);
-            this.dataGridView1.TabIndex = 47;
+            this.CustomerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CustomerList.BackgroundColor = System.Drawing.Color.White;
+            this.CustomerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CustomerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustomerList.Location = new System.Drawing.Point(215, 384);
+            this.CustomerList.Name = "CustomerList";
+            this.CustomerList.RowHeadersWidth = 62;
+            this.CustomerList.Size = new System.Drawing.Size(812, 217);
+            this.CustomerList.TabIndex = 57;
+            this.CustomerList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerList_CellClick);
             // 
             // Customers
             // 
@@ -443,19 +432,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1048, 671);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.CustomerList);
+            this.Controls.Add(this.button_delete);
+            this.Controls.Add(this.button_add);
+            this.Controls.Add(this.button_edit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label_itemsmanagment);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox_category);
+            this.Controls.Add(this.GenderTb);
             this.Controls.Add(this.label_price);
-            this.Controls.Add(this.textBox_price);
+            this.Controls.Add(this.PhoneTb);
             this.Controls.Add(this.label_category);
-            this.Controls.Add(this.label_item);
-            this.Controls.Add(this.textbox_item);
+            this.Controls.Add(this.label_Name);
+            this.Controls.Add(this.NameTb);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Nirmala UI", 11.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -463,7 +452,6 @@
             this.Name = "Customers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customers";
-            this.Load += new System.EventHandler(this.Customers_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -477,7 +465,7 @@
             this.panel_logout.ResumeLayout(false);
             this.panel_logout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,13 +475,12 @@
 
         private System.Windows.Forms.Label label_itemsmanagment;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox_category;
+        private System.Windows.Forms.ComboBox GenderTb;
         private System.Windows.Forms.Label label_price;
-        private System.Windows.Forms.TextBox textBox_price;
+        private System.Windows.Forms.TextBox PhoneTb;
         private System.Windows.Forms.Label label_category;
-        private System.Windows.Forms.Label label_item;
-        private System.Windows.Forms.TextBox textbox_item;
-        private System.Windows.Forms.Label label_exit;
+        private System.Windows.Forms.Label label_Name;
+        private System.Windows.Forms.TextBox NameTb;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
@@ -511,9 +498,9 @@
         private System.Windows.Forms.PictureBox pictureBox_logout;
         private System.Windows.Forms.Label label_logout;
         private System.Windows.Forms.Label label_items;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button_delete;
+        private System.Windows.Forms.Button button_add;
+        private System.Windows.Forms.Button button_edit;
+        private System.Windows.Forms.DataGridView CustomerList;
     }
 }

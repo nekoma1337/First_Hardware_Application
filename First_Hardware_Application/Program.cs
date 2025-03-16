@@ -16,7 +16,7 @@ namespace First_Hardware_Application
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Categories());
+            Application.Run(new Login());
         }
     }
 }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Categories));
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label_exit = new System.Windows.Forms.Label();
             this.label_item = new System.Windows.Forms.Label();
             this.NameTb = new System.Windows.Forms.TextBox();
             this.label_itemsmanagment = new System.Windows.Forms.Label();
@@ -83,43 +82,31 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.panel2.Controls.Add(this.label_exit);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(165, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(883, 50);
             this.panel2.TabIndex = 44;
             // 
-            // label_exit
-            // 
-            this.label_exit.AutoSize = true;
-            this.label_exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_exit.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_exit.ForeColor = System.Drawing.Color.Black;
-            this.label_exit.Location = new System.Drawing.Point(855, 3);
-            this.label_exit.Name = "label_exit";
-            this.label_exit.Size = new System.Drawing.Size(39, 45);
-            this.label_exit.TabIndex = 25;
-            this.label_exit.Text = "X";
-            // 
             // label_item
             // 
             this.label_item.AutoSize = true;
             this.label_item.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label_item.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_item.Location = new System.Drawing.Point(520, 139);
+            this.label_item.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_item.Location = new System.Drawing.Point(517, 134);
             this.label_item.Name = "label_item";
-            this.label_item.Size = new System.Drawing.Size(174, 31);
+            this.label_item.Size = new System.Drawing.Size(219, 40);
             this.label_item.TabIndex = 46;
             this.label_item.Text = "Category Name";
+            this.label_item.Click += new System.EventHandler(this.label_item_Click);
             // 
             // NameTb
             // 
             this.NameTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.NameTb.Location = new System.Drawing.Point(446, 174);
+            this.NameTb.Location = new System.Drawing.Point(429, 192);
             this.NameTb.Name = "NameTb";
-            this.NameTb.Size = new System.Drawing.Size(335, 37);
+            this.NameTb.Size = new System.Drawing.Size(309, 37);
             this.NameTb.TabIndex = 45;
             // 
             // label_itemsmanagment
@@ -147,8 +134,11 @@
             // 
             // CategoryList
             // 
+            this.CategoryList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CategoryList.BackgroundColor = System.Drawing.Color.White;
+            this.CategoryList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CategoryList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CategoryList.Location = new System.Drawing.Point(210, 372);
+            this.CategoryList.Location = new System.Drawing.Point(206, 372);
             this.CategoryList.Name = "CategoryList";
             this.CategoryList.RowHeadersWidth = 62;
             this.CategoryList.Size = new System.Drawing.Size(812, 217);
@@ -234,6 +224,7 @@
             this.label_billing.TabIndex = 14;
             this.label_billing.Text = "Billing";
             this.label_billing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_billing.Click += new System.EventHandler(this.label_billing_Click);
             // 
             // pictureBox3
             // 
@@ -258,6 +249,7 @@
             this.label_customer.TabIndex = 12;
             this.label_customer.Text = "Customer";
             this.label_customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_customer.Click += new System.EventHandler(this.label_customer_Click);
             // 
             // pictureBox2
             // 
@@ -282,6 +274,7 @@
             this.label_categories.TabIndex = 10;
             this.label_categories.Text = "Categories";
             this.label_categories.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_categories.Click += new System.EventHandler(this.label_categories_Click);
             // 
             // pictureBox1
             // 
@@ -304,6 +297,7 @@
             this.panel_logout.Name = "panel_logout";
             this.panel_logout.Size = new System.Drawing.Size(189, 56);
             this.panel_logout.TabIndex = 0;
+            this.panel_logout.Click += new System.EventHandler(this.label_logout_Click);
             // 
             // pictureBox_logout
             // 
@@ -328,6 +322,7 @@
             this.label_logout.TabIndex = 6;
             this.label_logout.Text = "Logout";
             this.label_logout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_logout.Click += new System.EventHandler(this.label_logout_Click);
             // 
             // label_items
             // 
@@ -340,6 +335,7 @@
             this.label_items.TabIndex = 8;
             this.label_items.Text = "Items";
             this.label_items.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_items.Click += new System.EventHandler(this.label_items_Click);
             // 
             // button_delete
             // 
@@ -347,7 +343,7 @@
             this.button_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_delete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_delete.FlatAppearance.BorderSize = 0;
-            this.button_delete.Location = new System.Drawing.Point(729, 259);
+            this.button_delete.Location = new System.Drawing.Point(691, 256);
             this.button_delete.Name = "button_delete";
             this.button_delete.Size = new System.Drawing.Size(148, 46);
             this.button_delete.TabIndex = 60;
@@ -361,7 +357,7 @@
             this.button_additem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_additem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_additem.FlatAppearance.BorderSize = 0;
-            this.button_additem.Location = new System.Drawing.Point(547, 259);
+            this.button_additem.Location = new System.Drawing.Point(509, 256);
             this.button_additem.Name = "button_additem";
             this.button_additem.Size = new System.Drawing.Size(156, 46);
             this.button_additem.TabIndex = 59;
@@ -375,7 +371,7 @@
             this.button_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_edit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_edit.FlatAppearance.BorderSize = 0;
-            this.button_edit.Location = new System.Drawing.Point(377, 259);
+            this.button_edit.Location = new System.Drawing.Point(339, 256);
             this.button_edit.Name = "button_edit";
             this.button_edit.Size = new System.Drawing.Size(149, 46);
             this.button_edit.TabIndex = 58;
@@ -428,7 +424,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label_exit;
         private System.Windows.Forms.Label label_item;
         private System.Windows.Forms.TextBox NameTb;
         private System.Windows.Forms.Label label_itemsmanagment;

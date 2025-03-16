@@ -31,25 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Billing));
             this.label_itemsmanagment = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_delete = new System.Windows.Forms.Button();
             this.button_addItem = new System.Windows.Forms.Button();
-            this.button_edit = new System.Windows.Forms.Button();
-            this.comboBox_category = new System.Windows.Forms.ComboBox();
+            this.PrintBill_button = new System.Windows.Forms.Button();
             this.label_Manufacturer = new System.Windows.Forms.Label();
-            this.textBox_manufacturer = new System.Windows.Forms.TextBox();
+            this.QtTb = new System.Windows.Forms.TextBox();
             this.label_price = new System.Windows.Forms.Label();
-            this.textBox_price = new System.Windows.Forms.TextBox();
+            this.PriceTb = new System.Windows.Forms.TextBox();
             this.label_category = new System.Windows.Forms.Label();
             this.label_item = new System.Windows.Forms.Label();
-            this.textbox_item = new System.Windows.Forms.TextBox();
-            this.label_exit = new System.Windows.Forms.Label();
+            this.ItemTb = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.PaymentMode = new System.Windows.Forms.GroupBox();
+            this.radioButton_mobile = new System.Windows.Forms.RadioButton();
+            this.radioButton_card = new System.Windows.Forms.RadioButton();
+            this.radioButton_Cash = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -65,9 +62,13 @@
             this.pictureBox_logout = new System.Windows.Forms.PictureBox();
             this.label_logout = new System.Windows.Forms.Label();
             this.label_items = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ItemList = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ClientBill = new System.Windows.Forms.DataGridView();
+            this.GrdTotallb = new System.Windows.Forms.Label();
+            this.CustTb = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.PaymentMode.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -77,6 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_logout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientBill)).BeginInit();
             this.SuspendLayout();
             // 
             // label_itemsmanagment
@@ -86,9 +89,9 @@
             this.label_itemsmanagment.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_itemsmanagment.Location = new System.Drawing.Point(201, 54);
             this.label_itemsmanagment.Name = "label_itemsmanagment";
-            this.label_itemsmanagment.Size = new System.Drawing.Size(309, 45);
+            this.label_itemsmanagment.Size = new System.Drawing.Size(116, 45);
             this.label_itemsmanagment.TabIndex = 37;
-            this.label_itemsmanagment.Text = "Items Management";
+            this.label_itemsmanagment.Text = "Billing";
             this.label_itemsmanagment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -103,15 +106,6 @@
             this.label2.Text = "Client Bill";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(635, 207);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(401, 376);
-            this.dataGridView1.TabIndex = 41;
-            // 
             // button_delete
             // 
             this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
@@ -124,6 +118,7 @@
             this.button_delete.TabIndex = 40;
             this.button_delete.Text = "Reset";
             this.button_delete.UseVisualStyleBackColor = false;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // button_addItem
             // 
@@ -137,28 +132,21 @@
             this.button_addItem.TabIndex = 39;
             this.button_addItem.Text = "Add To Bill";
             this.button_addItem.UseVisualStyleBackColor = false;
+            this.button_addItem.Click += new System.EventHandler(this.button_addItem_Click);
             // 
-            // button_edit
+            // PrintBill_button
             // 
-            this.button_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.button_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_edit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_edit.FlatAppearance.BorderSize = 0;
-            this.button_edit.Location = new System.Drawing.Point(774, 589);
-            this.button_edit.Name = "button_edit";
-            this.button_edit.Size = new System.Drawing.Size(142, 42);
-            this.button_edit.TabIndex = 38;
-            this.button_edit.Text = "Print Bill";
-            this.button_edit.UseVisualStyleBackColor = false;
-            // 
-            // comboBox_category
-            // 
-            this.comboBox_category.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox_category.FormattingEnabled = true;
-            this.comboBox_category.Location = new System.Drawing.Point(424, 149);
-            this.comboBox_category.Name = "comboBox_category";
-            this.comboBox_category.Size = new System.Drawing.Size(191, 39);
-            this.comboBox_category.TabIndex = 36;
+            this.PrintBill_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
+            this.PrintBill_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PrintBill_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PrintBill_button.FlatAppearance.BorderSize = 0;
+            this.PrintBill_button.Location = new System.Drawing.Point(774, 613);
+            this.PrintBill_button.Name = "PrintBill_button";
+            this.PrintBill_button.Size = new System.Drawing.Size(142, 42);
+            this.PrintBill_button.TabIndex = 38;
+            this.PrintBill_button.Text = "Print Bill";
+            this.PrintBill_button.UseVisualStyleBackColor = false;
+            this.PrintBill_button.Click += new System.EventHandler(this.PrintBill_button_Click);
             // 
             // label_Manufacturer
             // 
@@ -167,18 +155,18 @@
             this.label_Manufacturer.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Manufacturer.Location = new System.Drawing.Point(203, 201);
             this.label_Manufacturer.Name = "label_Manufacturer";
-            this.label_Manufacturer.Size = new System.Drawing.Size(152, 31);
+            this.label_Manufacturer.Size = new System.Drawing.Size(102, 31);
             this.label_Manufacturer.TabIndex = 35;
-            this.label_Manufacturer.Text = "Manufacturer";
+            this.label_Manufacturer.Text = "Quantity";
             // 
-            // textBox_manufacturer
+            // QtTb
             // 
-            this.textBox_manufacturer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_manufacturer.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox_manufacturer.Location = new System.Drawing.Point(207, 236);
-            this.textBox_manufacturer.Name = "textBox_manufacturer";
-            this.textBox_manufacturer.Size = new System.Drawing.Size(188, 37);
-            this.textBox_manufacturer.TabIndex = 34;
+            this.QtTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.QtTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.QtTb.Location = new System.Drawing.Point(207, 236);
+            this.QtTb.Name = "QtTb";
+            this.QtTb.Size = new System.Drawing.Size(188, 37);
+            this.QtTb.TabIndex = 34;
             // 
             // label_price
             // 
@@ -191,14 +179,14 @@
             this.label_price.TabIndex = 31;
             this.label_price.Text = "Price";
             // 
-            // textBox_price
+            // PriceTb
             // 
-            this.textBox_price.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_price.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox_price.Location = new System.Drawing.Point(424, 236);
-            this.textBox_price.Name = "textBox_price";
-            this.textBox_price.Size = new System.Drawing.Size(188, 37);
-            this.textBox_price.TabIndex = 30;
+            this.PriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PriceTb.Location = new System.Drawing.Point(424, 236);
+            this.PriceTb.Name = "PriceTb";
+            this.PriceTb.Size = new System.Drawing.Size(188, 37);
+            this.PriceTb.TabIndex = 30;
             // 
             // label_category
             // 
@@ -207,9 +195,10 @@
             this.label_category.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_category.Location = new System.Drawing.Point(420, 114);
             this.label_category.Name = "label_category";
-            this.label_category.Size = new System.Drawing.Size(107, 31);
+            this.label_category.Size = new System.Drawing.Size(112, 31);
             this.label_category.TabIndex = 29;
-            this.label_category.Text = "Category";
+            this.label_category.Text = "Customer";
+            this.label_category.Click += new System.EventHandler(this.label_category_Click);
             // 
             // label_item
             // 
@@ -218,35 +207,22 @@
             this.label_item.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_item.Location = new System.Drawing.Point(203, 114);
             this.label_item.Name = "label_item";
-            this.label_item.Size = new System.Drawing.Size(60, 31);
+            this.label_item.Size = new System.Drawing.Size(70, 31);
             this.label_item.TabIndex = 28;
-            this.label_item.Text = "Item";
+            this.label_item.Text = "Items";
             // 
-            // textbox_item
+            // ItemTb
             // 
-            this.textbox_item.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textbox_item.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textbox_item.Location = new System.Drawing.Point(207, 149);
-            this.textbox_item.Name = "textbox_item";
-            this.textbox_item.Size = new System.Drawing.Size(188, 37);
-            this.textbox_item.TabIndex = 27;
-            // 
-            // label_exit
-            // 
-            this.label_exit.AutoSize = true;
-            this.label_exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_exit.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_exit.ForeColor = System.Drawing.Color.Black;
-            this.label_exit.Location = new System.Drawing.Point(855, 3);
-            this.label_exit.Name = "label_exit";
-            this.label_exit.Size = new System.Drawing.Size(39, 45);
-            this.label_exit.TabIndex = 25;
-            this.label_exit.Text = "X";
+            this.ItemTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ItemTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ItemTb.Location = new System.Drawing.Point(207, 149);
+            this.ItemTb.Name = "ItemTb";
+            this.ItemTb.Size = new System.Drawing.Size(188, 37);
+            this.ItemTb.TabIndex = 27;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(178)))), ((int)(((byte)(43)))));
-            this.panel2.Controls.Add(this.label_exit);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(165, 0);
             this.panel2.Name = "panel2";
@@ -265,54 +241,54 @@
             this.label1.Text = "Hardware Shop Management System 2.0";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox1
+            // PaymentMode
             // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(635, 76);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(401, 78);
-            this.groupBox1.TabIndex = 43;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Payment Mode";
+            this.PaymentMode.Controls.Add(this.radioButton_mobile);
+            this.PaymentMode.Controls.Add(this.radioButton_card);
+            this.PaymentMode.Controls.Add(this.radioButton_Cash);
+            this.PaymentMode.Location = new System.Drawing.Point(635, 76);
+            this.PaymentMode.Name = "PaymentMode";
+            this.PaymentMode.Size = new System.Drawing.Size(401, 78);
+            this.PaymentMode.TabIndex = 43;
+            this.PaymentMode.TabStop = false;
+            this.PaymentMode.Text = "Payment Mode";
             // 
-            // radioButton3
+            // radioButton_mobile
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(265, 35);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(114, 36);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Mobile";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.radioButton_mobile.AutoSize = true;
+            this.radioButton_mobile.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_mobile.Location = new System.Drawing.Point(265, 35);
+            this.radioButton_mobile.Name = "radioButton_mobile";
+            this.radioButton_mobile.Size = new System.Drawing.Size(114, 36);
+            this.radioButton_mobile.TabIndex = 2;
+            this.radioButton_mobile.TabStop = true;
+            this.radioButton_mobile.Text = "Mobile";
+            this.radioButton_mobile.UseVisualStyleBackColor = true;
+            this.radioButton_mobile.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // radioButton2
+            // radioButton_card
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(151, 35);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(88, 36);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Card";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton_card.AutoSize = true;
+            this.radioButton_card.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_card.Location = new System.Drawing.Point(151, 35);
+            this.radioButton_card.Name = "radioButton_card";
+            this.radioButton_card.Size = new System.Drawing.Size(88, 36);
+            this.radioButton_card.TabIndex = 1;
+            this.radioButton_card.TabStop = true;
+            this.radioButton_card.Text = "Card";
+            this.radioButton_card.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButton_Cash
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(31, 35);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(90, 36);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Cash";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton_Cash.AutoSize = true;
+            this.radioButton_Cash.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_Cash.Location = new System.Drawing.Point(31, 35);
+            this.radioButton_Cash.Name = "radioButton_Cash";
+            this.radioButton_Cash.Size = new System.Drawing.Size(90, 36);
+            this.radioButton_Cash.TabIndex = 0;
+            this.radioButton_Cash.TabStop = true;
+            this.radioButton_Cash.Text = "Cash";
+            this.radioButton_Cash.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -393,6 +369,7 @@
             this.label_billing.TabIndex = 14;
             this.label_billing.Text = "Billing";
             this.label_billing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_billing.Click += new System.EventHandler(this.label_billing_Click);
             // 
             // pictureBox3
             // 
@@ -417,6 +394,7 @@
             this.label_customer.TabIndex = 12;
             this.label_customer.Text = "Customer";
             this.label_customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_customer.Click += new System.EventHandler(this.label_customer_Click);
             // 
             // pictureBox2
             // 
@@ -441,6 +419,7 @@
             this.label_categories.TabIndex = 10;
             this.label_categories.Text = "Categories";
             this.label_categories.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_categories.Click += new System.EventHandler(this.label_categories_Click);
             // 
             // pictureBox1
             // 
@@ -463,6 +442,8 @@
             this.panel_logout.Name = "panel_logout";
             this.panel_logout.Size = new System.Drawing.Size(189, 56);
             this.panel_logout.TabIndex = 0;
+            this.panel_logout.Click += new System.EventHandler(this.label_logout_Click);
+            this.panel_logout.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_logout_Paint);
             // 
             // pictureBox_logout
             // 
@@ -487,6 +468,7 @@
             this.label_logout.TabIndex = 6;
             this.label_logout.Text = "Logout";
             this.label_logout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_logout.Click += new System.EventHandler(this.label_logout_Click);
             // 
             // label_items
             // 
@@ -499,6 +481,65 @@
             this.label_items.TabIndex = 8;
             this.label_items.Text = "Items";
             this.label_items.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_items.Click += new System.EventHandler(this.label_items_Click);
+            // 
+            // ItemList
+            // 
+            this.ItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ItemList.BackgroundColor = System.Drawing.Color.White;
+            this.ItemList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemList.Location = new System.Drawing.Point(206, 411);
+            this.ItemList.Name = "ItemList";
+            this.ItemList.RowHeadersWidth = 62;
+            this.ItemList.Size = new System.Drawing.Size(420, 244);
+            this.ItemList.TabIndex = 60;
+            this.ItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemList_CellClick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(353, 354);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(131, 40);
+            this.label3.TabIndex = 59;
+            this.label3.Text = "Items list";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // ClientBill
+            // 
+            this.ClientBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ClientBill.BackgroundColor = System.Drawing.Color.White;
+            this.ClientBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ClientBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClientBill.Location = new System.Drawing.Point(628, 221);
+            this.ClientBill.Name = "ClientBill";
+            this.ClientBill.RowHeadersWidth = 62;
+            this.ClientBill.Size = new System.Drawing.Size(408, 351);
+            this.ClientBill.TabIndex = 61;
+            // 
+            // GrdTotallb
+            // 
+            this.GrdTotallb.AutoSize = true;
+            this.GrdTotallb.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.GrdTotallb.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GrdTotallb.Location = new System.Drawing.Point(810, 575);
+            this.GrdTotallb.Name = "GrdTotallb";
+            this.GrdTotallb.Size = new System.Drawing.Size(64, 31);
+            this.GrdTotallb.TabIndex = 62;
+            this.GrdTotallb.Text = "Price";
+            this.GrdTotallb.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // CustTb
+            // 
+            this.CustTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CustTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CustTb.Location = new System.Drawing.Point(424, 148);
+            this.CustTb.Name = "CustTb";
+            this.CustTb.Size = new System.Drawing.Size(188, 37);
+            this.CustTb.TabIndex = 63;
             // 
             // Billing
             // 
@@ -506,22 +547,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1048, 671);
+            this.Controls.Add(this.CustTb);
+            this.Controls.Add(this.GrdTotallb);
+            this.Controls.Add(this.ClientBill);
+            this.Controls.Add(this.ItemList);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.PaymentMode);
             this.Controls.Add(this.label_itemsmanagment);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_addItem);
-            this.Controls.Add(this.button_edit);
-            this.Controls.Add(this.comboBox_category);
+            this.Controls.Add(this.PrintBill_button);
             this.Controls.Add(this.label_Manufacturer);
-            this.Controls.Add(this.textBox_manufacturer);
+            this.Controls.Add(this.QtTb);
             this.Controls.Add(this.label_price);
-            this.Controls.Add(this.textBox_price);
+            this.Controls.Add(this.PriceTb);
             this.Controls.Add(this.label_category);
             this.Controls.Add(this.label_item);
-            this.Controls.Add(this.textbox_item);
+            this.Controls.Add(this.ItemTb);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Nirmala UI", 11.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -529,11 +573,10 @@
             this.Name = "Billing";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Billing";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.PaymentMode.ResumeLayout(false);
+            this.PaymentMode.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -545,6 +588,8 @@
             this.panel_logout.ResumeLayout(false);
             this.panel_logout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientBill)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -554,25 +599,22 @@
 
         private System.Windows.Forms.Label label_itemsmanagment;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_delete;
         private System.Windows.Forms.Button button_addItem;
-        private System.Windows.Forms.Button button_edit;
-        private System.Windows.Forms.ComboBox comboBox_category;
+        private System.Windows.Forms.Button PrintBill_button;
         private System.Windows.Forms.Label label_Manufacturer;
-        private System.Windows.Forms.TextBox textBox_manufacturer;
+        private System.Windows.Forms.TextBox QtTb;
         private System.Windows.Forms.Label label_price;
-        private System.Windows.Forms.TextBox textBox_price;
+        private System.Windows.Forms.TextBox PriceTb;
         private System.Windows.Forms.Label label_category;
         private System.Windows.Forms.Label label_item;
-        private System.Windows.Forms.TextBox textbox_item;
-        private System.Windows.Forms.Label label_exit;
+        private System.Windows.Forms.TextBox ItemTb;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox PaymentMode;
+        private System.Windows.Forms.RadioButton radioButton_mobile;
+        private System.Windows.Forms.RadioButton radioButton_card;
+        private System.Windows.Forms.RadioButton radioButton_Cash;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
@@ -588,5 +630,10 @@
         private System.Windows.Forms.PictureBox pictureBox_logout;
         private System.Windows.Forms.Label label_logout;
         private System.Windows.Forms.Label label_items;
+        private System.Windows.Forms.DataGridView ItemList;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView ClientBill;
+        private System.Windows.Forms.Label GrdTotallb;
+        private System.Windows.Forms.TextBox CustTb;
     }
 }

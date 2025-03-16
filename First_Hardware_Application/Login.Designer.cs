@@ -57,7 +57,7 @@
             // 
             this.textbox_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textbox_username.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textbox_username.Location = new System.Drawing.Point(320, 176);
+            this.textbox_username.Location = new System.Drawing.Point(321, 176);
             this.textbox_username.Name = "textbox_username";
             this.textbox_username.Size = new System.Drawing.Size(188, 37);
             this.textbox_username.TabIndex = 2;
@@ -91,7 +91,7 @@
             // 
             this.textbox_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textbox_password.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textbox_password.Location = new System.Drawing.Point(320, 251);
+            this.textbox_password.Location = new System.Drawing.Point(321, 251);
             this.textbox_password.Name = "textbox_password";
             this.textbox_password.Size = new System.Drawing.Size(188, 37);
             this.textbox_password.TabIndex = 4;
@@ -119,12 +119,13 @@
             this.button_login.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_login.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_login.FlatAppearance.BorderSize = 0;
-            this.button_login.Location = new System.Drawing.Point(357, 306);
+            this.button_login.Location = new System.Drawing.Point(358, 306);
             this.button_login.Name = "button_login";
             this.button_login.Size = new System.Drawing.Size(137, 39);
             this.button_login.TabIndex = 8;
             this.button_login.Text = "Login";
             this.button_login.UseVisualStyleBackColor = false;
+            this.button_login.Click += new System.EventHandler(this.button_login_Click);
             // 
             // label1
             // 
@@ -161,6 +162,7 @@
             this.label5.Size = new System.Drawing.Size(28, 31);
             this.label5.TabIndex = 11;
             this.label5.Text = "X";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Login
             // 

@@ -65,7 +65,7 @@ namespace First_Hardware_Application
                 try
                 {
                     string Name = NameTb.Text;
-                    string Query = "Update CategoryTbl set CatName = '{0}' where CatCode = {1}";
+                    string Query = "update CategoryTbl set CatName = '{0}' where CatCode = {1}";
                     Query = string.Format(Query, Name,Key);
                     Con.GetData(Query);
                     ShowCategories();
@@ -97,6 +97,48 @@ namespace First_Hardware_Application
                 {
                     MessageBox.Show(Ex.Message);
                 }
+        }
+
+        private void label_item_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_items_Click(object sender, EventArgs e)
+        {
+            
+            Items Obj = new Items();
+            Obj.Show();
+            this.Hide();
+        
+        }
+
+        private void label_categories_Click(object sender, EventArgs e)
+        {
+            Categories Obj = new Categories();
+            Obj.Show();
+            this.Hide();
+        }
+
+        private void label_customer_Click(object sender, EventArgs e)
+        {
+            Customers Obj = new Customers();
+            Obj.Show();
+            this.Hide();
+        }
+
+        private void label_billing_Click(object sender, EventArgs e)
+        {
+            Billing Obj = new Billing();
+            Obj.Show();
+            this.Hide();
+        }
+
+        private void label_logout_Click(object sender, EventArgs e)
+        {
+            Login Obj = new Login();
+            Obj.Show();
+            this.Hide();
         }
     }
 }
