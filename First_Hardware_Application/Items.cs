@@ -17,11 +17,34 @@ namespace First_Hardware_Application
         public Items()
         {
             InitializeComponent();
+            DraggableForm.EnableDrag(this);
             Con = new Function();
             ShowItems();
             GetCategories();
+            panel3.BackColor = Color.FromArgb(45, 135, 204);
+            panel3.ForeColor = Color.White;
         }
         Function Con;
+
+        private void Button_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.BackColor = Color.FromArgb(45, 135, 204);
+                button.ForeColor = Color.White;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.ForeColor = Color.FromArgb(45, 135, 204);
+                button.BackColor = Color.White;
+                button.FlatAppearance.BorderSize = 1;
+                button.FlatAppearance.BorderColor = Color.FromArgb(45, 135, 204);
+            }
+        }
         private void GetCategories()
         {
             string Query = "select * from CategoryTbl";
@@ -34,7 +57,7 @@ namespace First_Hardware_Application
             string Query = "select * from ItemsTbl";
             ItemList.DataSource = Con.GetData(Query);
         }
-
+        
         private void button_edit_Click(object sender, EventArgs e)
         {
             if (NameTb.Text == "" || CatCb.SelectedIndex == -1 || PriceTb.Text == "" || StockTb.Text == "" || ManufacturerTb.Text == "")
@@ -65,7 +88,7 @@ namespace First_Hardware_Application
                     MessageBox.Show(Ex.Message);
                 }
         }
-
+       
         private void button_addItem_Click(object sender, EventArgs e)
         {
             if (NameTb.Text == "" || CatCb.SelectedIndex == -1 || PriceTb.Text == "" || StockTb.Text == "" || ManufacturerTb.Text == "")
@@ -145,81 +168,39 @@ namespace First_Hardware_Application
                     MessageBox.Show(Ex.Message);
                 }
         }
-        private void Items_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label_logout_Click(object sender, EventArgs e)
+        private void login_Click(object sender, EventArgs e)
         {
             Login Obj = new Login();
             Obj.Show();
             this.Hide();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel_logout_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label_username_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textbox_username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CategoryList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label_items_Click(object sender, EventArgs e)
-        {
-            Items Obj = new Items();
-            Obj.Show();
-            this.Hide();
-        }
-
-        private void label_categories_Click(object sender, EventArgs e)
+        private void categories_Click(object sender, EventArgs e)
         {
             Categories Obj = new Categories();
             Obj.Show();
             this.Hide();
         }
 
-        private void label_customer_Click(object sender, EventArgs e)
+        private void customer_Click(object sender, EventArgs e)
         {
             Customers Obj = new Customers();
             Obj.Show();
             this.Hide();
         }
 
-       
-
-        private void label_billing_Click(object sender, EventArgs e)
+        private void billing_Click(object sender, EventArgs e)
         {
             Billing Obj = new Billing();
             Obj.Show();
             this.Hide();
         }
+        private void items_Click(object sender, EventArgs e)
+        {
+            Items Obj = new Items();
+            Obj.Show();
+            this.Hide();
+        }
+        
     }
 }

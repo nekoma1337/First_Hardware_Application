@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace First_Hardware_Application
 {
@@ -9,12 +12,33 @@ namespace First_Hardware_Application
         public Categories()
         {
             InitializeComponent();
+            DraggableForm.EnableDrag(this);
             Con = new Function();
             ShowCategories();
+            panel4.BackColor = Color.FromArgb(45, 135, 204);
+            panel4.ForeColor = Color.White;
         }
 
         Function Con;
+        private void Button_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.BackColor = Color.FromArgb(45, 135, 204);
+                button.ForeColor = Color.White;
+            }
+        }
 
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.ForeColor = Color.FromArgb(45, 135, 204);
+                button.BackColor = Color.White;
+                button.FlatAppearance.BorderSize = 1;
+                button.FlatAppearance.BorderColor = Color.FromArgb(45, 135, 204);
+            }
+        }
         private void ShowCategories()
         {
             string Query = "select * from CategoryTbl";
@@ -24,7 +48,7 @@ namespace First_Hardware_Application
         private void button_additem_Click(object sender, System.EventArgs e)
         {
             if (NameTb.Text == "" )
-                MessageBox.Show("Missing Data! ");
+                MessageBox.Show("Заповніть текстове поле!");
             else
                 try
                 {
@@ -33,7 +57,7 @@ namespace First_Hardware_Application
                     Query = string.Format(Query, Name);
                     Con.GetData(Query);
                     ShowCategories();
-                    MessageBox.Show("Category Added!!");
+                    MessageBox.Show("Категорія додана!");
                     NameTb.Text = "";
                 }
                 catch (Exception Ex)
@@ -43,23 +67,28 @@ namespace First_Hardware_Application
         }
         int Key = 0;
 
-        private void CategoryList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CategoryList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            NameTb.Text = CategoryList.SelectedRows[0].Cells[1].Value.ToString();
+            var selectedRow = CategoryList.Rows[e.RowIndex];
 
-            if (NameTb.Text == "")
+            NameTb.Text = selectedRow.Cells[1].Value?.ToString() ?? "Не указано";
+           
+            if (!string.IsNullOrEmpty(selectedRow.Cells[0].Value?.ToString()))
             {
-                Key = 0;
+                Key = Convert.ToInt32(selectedRow.Cells[0].Value.ToString());
             }
             else
-                Key = Convert.ToInt32(CategoryList.SelectedRows[0].Cells[0].Value.ToString());
-        }
+            {
+                Key = 0;
 
+            }
+        }
+       
         private void button_edit_Click(object sender, System.EventArgs e)
         {
             
             if (NameTb.Text == "")
-                MessageBox.Show("Missing Data! ");
+                MessageBox.Show("Заповніть текстове поле! ");
 
             else
                 try
@@ -69,7 +98,7 @@ namespace First_Hardware_Application
                     Query = string.Format(Query, Name,Key);
                     Con.GetData(Query);
                     ShowCategories();
-                    MessageBox.Show("Category Updeted!!");
+                    MessageBox.Show("Категорія оновлена!");
                     NameTb.Text = "";
                 }
                 catch (Exception Ex)
@@ -77,20 +106,20 @@ namespace First_Hardware_Application
                     MessageBox.Show(Ex.Message);
                 }
         }
-
+        
         private void button_delete_Click(object sender, EventArgs e)
         {
-            if (NameTb.Text == "")
-                MessageBox.Show("Missing Data! ");
+            if (NameTb.Text == " ")
+                MessageBox.Show("Заповніть текстове поле!");
             else
                 try
                 {
                     string Name = NameTb.Text;
                     string Query = "Delete from CategoryTbl where CatCode = {0}";
-                    Query = string.Format(Query, Name);
+                    Query = string.Format(Query,  Key);
                     Con.GetData(Query);
                     ShowCategories();
-                    MessageBox.Show("Category Deleted!!");
+                    MessageBox.Show("Категорія видалена!");
                     NameTb.Text = "";
                 }
                 catch (Exception Ex)
@@ -98,47 +127,40 @@ namespace First_Hardware_Application
                     MessageBox.Show(Ex.Message);
                 }
         }
-
-        private void label_item_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_items_Click(object sender, EventArgs e)
-        {
-            
-            Items Obj = new Items();
-            Obj.Show();
-            this.Hide();
-        
-        }
-
-        private void label_categories_Click(object sender, EventArgs e)
+        private void Categories_Click(object sender, EventArgs e)
         {
             Categories Obj = new Categories();
             Obj.Show();
             this.Hide();
         }
+        private void Items_Click(object sender, EventArgs e)
+        {
+            Items Obj = new Items();
+            Obj.Show();
+            this.Hide();
+        }
 
-        private void label_customer_Click(object sender, EventArgs e)
+        private void Customers_Click(object sender, EventArgs e)
         {
             Customers Obj = new Customers();
             Obj.Show();
             this.Hide();
         }
 
-        private void label_billing_Click(object sender, EventArgs e)
+        private void Billing_Click(object sender, EventArgs e)
         {
             Billing Obj = new Billing();
             Obj.Show();
             this.Hide();
         }
 
-        private void label_logout_Click(object sender, EventArgs e)
+        private void logout_Click(object sender, EventArgs e)
         {
             Login Obj = new Login();
             Obj.Show();
             this.Hide();
         }
+
+        
     }
 }

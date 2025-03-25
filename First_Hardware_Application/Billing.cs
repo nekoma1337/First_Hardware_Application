@@ -13,11 +13,24 @@ namespace First_Hardware_Application
 {
     public partial class Billing: Form
     {
+        private int GenerateUniqueBillId()
+        {
+            string query = "SELECT ISNULL(MAX(BillIId), 0) FROM BillTbl";
+            DataTable result = Con.GetData(query);
+
+            int maxBillId = 0;
+            if (result.Rows.Count > 0 && result.Rows[0][0] != DBNull.Value)
+            {
+                maxBillId = Convert.ToInt32(result.Rows[0][0]);
+            }
+
+            return maxBillId + 1; // Генерируем новое уникальное значение
+        }
         public Billing()
         {
             Con = new Function();
             InitializeComponent();
-            
+            DraggableForm.EnableDrag(this);
             ClientBill.Columns.Add("Column1", "№");
             ClientBill.Columns.Add("Column2", "Item");
             ClientBill.Columns.Add("Column3", "Price");
@@ -50,12 +63,12 @@ namespace First_Hardware_Application
             else
             {
                 Key = 0;
-
             }
         }
         string PMethod = "";
         int n = 0;
         int GrdTotal = 0;
+        int Promotion = 0;
         private void UpdateStock()
         {
             if (ItemTb.Text == "" || PriceTb.Text == "" || QtTb.Text == "")
@@ -89,8 +102,13 @@ namespace First_Hardware_Application
             else
 
             {
+                if (textBox_promotion.Text == "")
+                    Promotion = 0;
+                else
+                    Promotion = Convert.ToInt32(textBox_promotion.Text);
+                
                 int Qte = Convert.ToInt32(QtTb.Text);
-                int total = Convert.ToInt32(PriceTb.Text) * Qte;
+                int total = (int)(Convert.ToInt32(PriceTb.Text)*(1-(Promotion/100.0f))) * Qte;
                 DataGridViewRow newRow = new DataGridViewRow();
                 newRow.CreateCells(ClientBill);
                 newRow.Cells[0].Value = n + 1;
@@ -104,6 +122,7 @@ namespace First_Hardware_Application
                 GrdTotallb.Text = "Rs " + GrdTotal;
                 UpdateStock();
                 ShowItems();
+                
 
             }
                 
@@ -112,11 +131,31 @@ namespace First_Hardware_Application
         {
             ItemTb.Text = "";
             PriceTb.Text = "";
+            textBox_promotion.Text = "";
+            QtTb.Text = "";
+
+            if (radioButton_mobile.Checked == true)
+            {
+                radioButton_mobile.Checked = false;
+;            }
+            else if (radioButton_Cash.Checked == true)
+            {
+                radioButton_Cash.Checked = false;
+
+            }
+            else
+            {
+                radioButton_card.Checked = false;
+            }
+            CustTb.Text = "";
+            ClientBill.Rows.Clear();
         }
         
         private void PrintBill_button_Click(object sender, EventArgs e)
         {
+            int Key = GenerateUniqueBillId();
             string formattedDate = DateTime.Today.Date.ToString("yyyy-MM-dd");
+            int Phone = Convert.ToInt32(PhoneTb.Text);
             if (ItemTb.Text == "" || CustTb.Text == "")
                 MessageBox.Show("Missing Data! ");
             else
@@ -126,7 +165,7 @@ namespace First_Hardware_Application
                     {
                         PMethod = "Mobile";
                     }
-                    else if ( radioButton_Cash.Checked == true)
+                    else if ( radioButton_card.Checked == true)
                     {
                         PMethod = "Card";
 
@@ -135,18 +174,32 @@ namespace First_Hardware_Application
                     {
                         PMethod = "Cash";
                     }
+                    
                     string Item = ItemTb.Text;
-                    string Query = "insert into BillTbl values('{0}','{1}','{2}','{3}','{4}')";
-                    Query = string.Format(Query, Key, formattedDate, CustTb.Text,GrdTotal, PMethod);
+                    string Query = "insert into BillTbl values('{0}','{1}','{2}','{3}','{4}','{5}')";
+                    Query = string.Format(Query, Key, formattedDate, CustTb.Text , Phone, GrdTotal, PMethod);
                     Con.GetData(Query);
                     ShowItems();
                     MessageBox.Show("Bill Added!!");
-                 
+                    
                 }
                 catch (Exception Ex)
                 {
                     MessageBox.Show(Ex.Message);
                 }
+
+                string Name = CustTb.Text;
+                string Gender = GenderTb.SelectedItem.ToString();
+                
+                DateTime dateOfBirth = DateTime.Parse(textBox_dateBorn.Text);
+                string formatedDate = dateOfBirth.ToString("yyyy-MM-dd");
+                string Query1 = "insert into CustomerTbl values('{0}','{1}','{2}' ,'{3}')";
+                Query1 = string.Format(Query1, Name, dateOfBirth, Gender, Phone);
+                Con.GetData(Query1);
+                
+
+            
+
         }
         private void label2_Click(object sender, EventArgs e)
         {
@@ -213,6 +266,36 @@ namespace First_Hardware_Application
             Login Obj = new Login();
             Obj.Show();
             this.Hide();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PriceTb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_price_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_dateBorn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
